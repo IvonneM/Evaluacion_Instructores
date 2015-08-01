@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Dimension as Dimension;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class DimensionController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$dimensions=Dimension::all();
+		return \View::make('listDimension', compact('dimensions'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class DimensionController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return \View::make('newDimension');
 	}
 
 	/**
@@ -32,9 +34,14 @@ class DimensionController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$Dimension = new Dimension;
+		$Dimension -> Tipo_Dimension = $request -> Tipo_Dimension;
+		$Dimension -> Descripcion = $request -> Descripcion;
+		$Dimension -> Estado_Dimension = $request -> Estado_Dimension;
+		$Dimension -> save();
+		return redirect('Dimension');
 	}
 
 	/**
@@ -43,7 +50,7 @@ class DimensionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id_D)
 	{
 		//
 	}
@@ -54,9 +61,10 @@ class DimensionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id_D)
 	{
-		//
+		$Dimension = Dimension ::find($id_D);
+		return\View::make('updateDimension', compact('Dimension'));
 	}
 
 	/**
@@ -65,9 +73,14 @@ class DimensionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
+		$Dimension = Dimension::find($request->id_D);
+		$Dimension -> Tipo_Dimension = $request ->Tipo_Dimension;
+		$Dimension -> Descripcion = $request ->Descripcion;
+		$Dimension -> Estado_Dimension = $request ->Estado_Dimension;
+		$Dimension -> save();
+		return redirect('Dimension');
 	}
 
 	/**
@@ -76,9 +89,24 @@ class DimensionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id_D)
 	{
-		//
+		$Dimension=Dimension::find($id_D);
+		$Dimension->delete();
+		return redirect()->back();
 	}
+
+	/**
+	 * Serch the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function search(Request $request)
+	{
+		$dimensions = Dimension::where('Tipo_Dimension','like','%'.$request->Tipo_Dimension.'%')->get();
+		return \View::make('listdimension', compact('dimensions'));
+	}
+
 
 }

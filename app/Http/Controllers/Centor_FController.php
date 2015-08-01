@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Centro_Formacion as Centro_Formacion;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class Centor_FController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$centro__formacions=Centro_Formacion::all();
+		return \View::make('listCentro_F', compact('centro__formacions'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class Centor_FController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return \View::make('newCentro_F');
 	}
 
 	/**
@@ -32,9 +34,17 @@ class Centor_FController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$Centro_Formacion = new Centro_Formacion;
+		$Centro_Formacion -> name = $request -> name;
+		$Centro_Formacion -> Telefono = $request -> Telefono;
+		$Centro_Formacion -> Direccion = $request -> Direccion;
+		$Centro_Formacion -> Descripcion = $request -> Descripcion;
+		$Centro_Formacion -> Estado_Centro = $request -> Estado_Centro;
+		$Centro_Formacion -> Cod_Centro = $request -> Cod_Centro;
+		$Centro_Formacion -> save();
+		return redirect('Centro_Formacion');
 	}
 
 	/**
@@ -43,7 +53,7 @@ class Centor_FController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id_C_F)
 	{
 		//
 	}
@@ -54,9 +64,10 @@ class Centor_FController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id_C_F)
 	{
-		//
+		$Centro_Formacion = Centro_Formacion ::find($id_C_F);
+		return\View::make('updateCentro_F', compact('Centro_Formacion'));
 	}
 
 	/**
@@ -65,9 +76,17 @@ class Centor_FController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
+		$Centro_Formacion = Centro_Formacion::find($request->id_C_F);
+		$Centro_Formacion -> name = $request -> name;
+		$Centro_Formacion -> Telefono = $request -> Telefono;
+		$Centro_Formacion -> Direccion = $request -> Direccion;
+		$Centro_Formacion -> Descripcion = $request -> Descripcion;
+		$Centro_Formacion -> Estado_Centro = $request -> Estado_Centro;
+		$Centro_Formacion -> Cod_Centro = $request -> Cod_Centro;
+		$Centro_Formacion -> save();
+		return redirect('Centro_Formacion');
 	}
 
 	/**
@@ -76,9 +95,22 @@ class Centor_FController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id_C_F)
 	{
-		//
+		$Centro_Formacion=Centro_Formacion::find($id_C_F);
+		$Centro_Formacion->delete();
+		return redirect()->back();
+	}
+/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function search(Request $request)
+	{
+		$centro__formacions = Centro_Formacion::where('name','like','%'.$request->name.'%')->get();
+		return \View::make('listCentro_F', compact('centro__formacions'));
 	}
 
 }

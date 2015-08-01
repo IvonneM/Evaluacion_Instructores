@@ -18,6 +18,23 @@ class DetalleEvaluacionInstructor extends Migration {
 			$table->integer('FK_Funcionario');
 			$table->integer('FK_Ficha');
 			$table->integer('FK_Evaluacion');
+/*
+			$table->foreign('id_Ficha_Intructor')
+			->references('id_F')
+			->on('Funcionario')
+			->onDelete('cascade');
+			
+			$table->foreign('id_Ficha_Intructor')
+			->references('id_Ficha')
+			->on('Ficha')
+			->onDelete('cascade');
+
+			$table->foreign('id_Ficha_Intructor')
+			->references('id_E')
+			->on('Evaluacion')
+			->onDelete('cascade');
+			*/
+			});
 	}
 
 	/**

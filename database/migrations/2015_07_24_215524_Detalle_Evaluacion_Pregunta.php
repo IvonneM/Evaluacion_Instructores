@@ -14,9 +14,22 @@ class DetalleEvaluacionPregunta extends Migration {
 	{
 		Schema::create('Detalle_E_P', function(Blueprint $table)
 		{
-            $table->increments('id_Detalle_R');
+            $table->increments('id_Detalle_E_P');
 			$table->integer('FK_Pregunta');
 			$table->integer('FK_Evaluacion');
+/*
+			$table->foreign('Detalle_E_P')
+			->references('id_Pregunta')
+			->on('preguntas')
+			->onDelete('cascade');
+			
+			$table->foreign('id_Detalle_E_P')
+			->references('id_E')
+			->on('Evaluacions')
+			->onDelete('cascade');
+*/
+			});
+			
 			
 	}
 

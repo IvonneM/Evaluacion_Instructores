@@ -16,16 +16,16 @@ Route::get('Aprediz/destroy/{id}',['as'=> 'Aprediz/destroy','uses'=> 'ApredizCon
 Route::post('Aprediz/search',['as' => 'Aprediz/search', 'uses' => 'ApredizController@search']);
 
 
-Route::resource('Centro_Formacion','Centro_FormacionController');
-Route::get('Centro_Formacion/destroy/{id}',['as'=> 'Centro_Formacion/destroy','uses'=> 'Centro_FormacionController@destroy']);
-Route::post('Centro_Formacion/search',['as' => 'Centro_Formacion/search', 'uses' => 'Centro_FormacionController@search']);
+Route::resource('Centro_Formacion','Centor_FController');
+Route::get('Centro_Formacion/destroy/{id}',['as'=> 'Centro_Formacion/destroy','uses'=> 'Centor_FControllerr@destroy']);
+Route::post('Centro_Formacion/search',['as' => 'Centro_Formacion/search', 'uses' => 'Centor_FController@search']);
 
 Route::resource('Coordinacion','CoordinacionController');
 Route::get('Coordinacion/destroy/{id}',['as'=> 'Coordinacion/destroy','uses'=> 'CoordinacionController@destroy']);
 Route::post('Coordinacion/search',['as' => 'Coordinacion/search', 'uses' => 'CoordinacionController@search']);
 
 Route::resource('Dimension','DimensionController');
-Route::get('Dimension/destroy/{id}',['as'=> 'Dimension/destroy','uses'=> 'DimensionController@destroy']);
+Route::get('Dimension/destroy/{id_D}',['as'=> 'Dimension/destroy','uses'=> 'DimensionController@destroy']);
 Route::post('Dimension/search',['as' => 'Dimension/search', 'uses' => 'DimensionController@search']);
 
 Route::resource('Evaluacion','EvaluacionController');
@@ -33,15 +33,15 @@ Route::get('Evaluacion/destroy/{id}',['as'=> 'Evaluacion/destroy','uses'=> 'Eval
 Route::post('Evaluacion/search',['as' => 'Evaluacion/search', 'uses' => 'EvaluacionController@search']);
 
 Route::resource('Ficha','FichaController');
-Route::get('Ficha/destroy/{id}',['as'=> 'Ficha/destroy','uses'=> 'FichaController@destroy']);
+Route::get('Ficha/destroy/{id_Ficha}',['as'=> 'Ficha/destroy','uses'=> 'FichaController@destroy']);
 Route::post('Ficha/search',['as' => 'Ficha/search', 'uses' => 'FichaController@search']);
 
 Route::resource('Funcionario','FuncionarioController');
-Route::get('Funcionario/destroy/{id}',['as'=> 'Funcionario/destroy','uses'=> 'FuncionarioController@destroy']);
+Route::get('Funcionario/destroy/{id_F}',['as'=> 'Funcionario/destroy','uses'=> 'FuncionarioController@destroy']);
 Route::post('Funcionario/search',['as' => 'Funcionario/search', 'uses' => 'FuncionarioController@search']);
 
 Route::resource('Pregunta','PreguntaController');
-Route::get('Pregunta/destroy/{id}',['as'=> 'Pregunta/destroy','uses'=> 'PreguntaController@destroy']);
+Route::get('Pregunta/destroy/{id_Pregunta}',['as'=> 'Pregunta/destroy','uses'=> 'PreguntaController@destroy']);
 Route::post('Pregunta/search',['as' => 'Pregunta/search', 'uses' => 'PreguntaController@search']);
 
 Route::resource('Programa_F','Programa_FController');

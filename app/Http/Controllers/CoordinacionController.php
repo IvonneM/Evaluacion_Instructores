@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Coordinacion as Coordinacion;
 
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CoordinacionController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$coordinacions=Coordinacion::all();
+		return \View::make('listCoordinacion', compact('coordinacions'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class CoordinacionController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return \View::make('newCoordinacion');
 	}
 
 	/**
@@ -32,9 +34,15 @@ class CoordinacionController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$Coordinacion = new Coordinacion;
+		$Coordinacion -> name = $request -> name;
+		$Coordinacion -> Descripcion = $request -> Descripcion;
+		$Coordinacion -> Estado_Coordinacion = $request -> Estado_Coordinacion;
+		$Coordinacion -> Cod_Coordinacion = $request -> Cood_Coordinacion;
+		$Coordinacion -> save();
+		return redirect('Coordinacion');
 	}
 
 	/**
@@ -43,7 +51,7 @@ class CoordinacionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id_Coo)
 	{
 		//
 	}
@@ -54,9 +62,10 @@ class CoordinacionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id_Coo)
 	{
-		//
+		$Coordinacion = Coordinacion ::find($id_Coo);
+		return\View::make('updateCoordinacion', compact('Coordinacion'));
 	}
 
 	/**
@@ -65,9 +74,15 @@ class CoordinacionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
+		$Coordinacion = Coordinacion::find($request->id_Coo);
+		$Coordinacion -> name = $request -> name;
+		$Coordinacion -> Descripcion = $request -> Descripcion;
+		$Coordinacion -> Estado_Coordinacion = $request -> Estado_Coordinacion;
+		$Coordinacion -> Cod_Coordinacion = $request -> Cood_Coordinacion;
+		$Coordinacion -> save();
+		return redirect('Coordinacion');
 	}
 
 	/**
@@ -76,9 +91,23 @@ class CoordinacionController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id_Coo)
+	{ 
+		$Coordinacion=Coordinacion::find($id_Coo);
+		$Coordinacion->delete();
+		return redirect()->back();
+	}
+
+/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function search(Request $request)
 	{
-		//
+		$coordinacions = Coordinacion::where('name','like','%'.$request->name.'%')->get();
+		return \View::make('list', compact('coordinacions'));
 	}
 
 }

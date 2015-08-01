@@ -7,6 +7,6 @@ class Ficha extends Model
 
 	protected $table = 'fichas';
 	protected $guarder =['id_Ficha'];
-	protected $fillame = ['Nombre_P','Estado_Ficha','Cod_Ficha']
+	protected $fillame = ['Nombre_P','Estado_Ficha','Cod_Ficha'];
 
 }

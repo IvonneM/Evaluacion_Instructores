@@ -2,6 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Pregunta as Pregunta;
+
 
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class PreguntaController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$preguntas=Pregunta::all();
+		return \View::make('listPregunta', compact('preguntas'));
 	}
 
 	/**
@@ -24,7 +27,7 @@ class PreguntaController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return \View::make('newPregunta');
 	}
 
 	/**
@@ -32,9 +35,13 @@ class PreguntaController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$Pregunta = new Pregunta;
+		$Pregunta -> Pregunta = $request -> Pregunta;
+		$Pregunta -> Estado_Pregunta = $request -> Estado_Pregunta;
+		$Pregunta -> save();
+		return redirect('Pregunta');
 	}
 
 	/**
@@ -43,7 +50,7 @@ class PreguntaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id_Pregunta)
 	{
 		//
 	}
@@ -54,9 +61,10 @@ class PreguntaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id_Pregunta)
 	{
-		//
+		$Pregunta = Pregunta ::find($id_Pregunta);
+		return\View::make('updatePregunta', compact('Pregunta'));
 	}
 
 	/**
@@ -65,9 +73,13 @@ class PreguntaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
-		//
+		$Pregunta = Pregunta::find($request->id_Pregunta);
+		$Pregunta -> Pregunta = $request ->Pregunta;
+		$Pregunta -> Estado_Pregunta = $request ->Estado_Pregunta;
+		$Pregunta -> save();
+		return redirect('Pregunta');
 	}
 
 	/**
@@ -76,9 +88,22 @@ class PreguntaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id_Pregunta)
 	{
-		//
+		$Pregunta=Pregunta::find($id_Pregunta);
+		$Pregunta->delete();
+		return redirect()->back();
+	}
+/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function search(Request $request)
+	{
+		$preguntas = Pregunta::where('Pregunta','like','%'.$request->Pregunta.'%')->get();
+		return \View::make('listPregunta', compact('preguntas'));
 	}
 
 }
