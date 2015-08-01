@@ -29,6 +29,10 @@ class CreateFichasTable extends Migration {
 			->on('Coordinacions')
 			->onDelete('cascade');
 			*/
+<<<<<<< HEAD
+=======
+			
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 			$table->timestamps();
 		});
 	}

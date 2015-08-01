@@ -18,6 +18,21 @@ class DetalleDimension extends Migration {
             $table->increments('id_Dimension');
 			$table->integer('FK_Pregunta');
 			$table->integer('FK_Dimension');
+<<<<<<< HEAD
+=======
+            /*
+			$table->foreign('id_Dimension')
+			->references('id_Pregunta')
+			->on('preguntas')
+			->onDelete('cascade');
+			
+			$table->foreign('id_Dimension')
+			->references('id_D')
+			->on('dimensions');
+
+			*/
+			});
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 		
 	}
 

@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Evaluacion Instructores</title>
+=======
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Laravel</title>
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
@@ -58,6 +65,11 @@
 	@yield('content')
 
 	<!-- Scripts -->
+<<<<<<< HEAD
 	
+=======
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 </body>
 </html>

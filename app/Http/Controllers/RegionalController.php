@@ -2,7 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use App\Models\Regional as Regional;
+=======
+
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 use Illuminate\Http\Request;
 
 class RegionalController extends Controller {
@@ -14,8 +18,12 @@ class RegionalController extends Controller {
 	 */
 	public function index()
 	{
+<<<<<<< HEAD
 		$regionals=Regional::all();
 		return \View::make('listRegional', compact('regionals'));
+=======
+		//
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 	}
 
 	/**
@@ -25,7 +33,11 @@ class RegionalController extends Controller {
 	 */
 	public function create()
 	{
+<<<<<<< HEAD
 		return \View::make('newRegional');
+=======
+		//
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 	}
 
 	/**
@@ -33,6 +45,7 @@ class RegionalController extends Controller {
 	 *
 	 * @return Response
 	 */
+<<<<<<< HEAD
 	public function store(Request $request)
 	{
 		$regionals = new Regional;
@@ -43,6 +56,11 @@ class RegionalController extends Controller {
 		$regionals-> save();
 		return redirect('regionals');
 
+=======
+	public function store()
+	{
+		//
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 	}
 
 	/**
@@ -51,7 +69,11 @@ class RegionalController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+<<<<<<< HEAD
 	public function show($id_R)
+=======
+	public function show($id)
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 	{
 		//
 	}
@@ -62,10 +84,16 @@ class RegionalController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+<<<<<<< HEAD
 	public function edit($id_R)
 	{
 		$regionals = Movie::find($id_R);
 		return\View::make('updateRegional', compact('regionals'));
+=======
+	public function edit($id)
+	{
+		//
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 	}
 
 	/**
@@ -74,6 +102,7 @@ class RegionalController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+<<<<<<< HEAD
 	public function update(Request $request)
 	{
 		$regionals = Regional::find($request->id_R);
@@ -84,6 +113,11 @@ class RegionalController extends Controller {
 		$regionals -> save();
 		return redirect('regionals');
 		
+=======
+	public function update($id)
+	{
+		//
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 	}
 
 	/**
@@ -92,6 +126,7 @@ class RegionalController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
+<<<<<<< HEAD
 	public function destroy($id_R)
 	{
 		$regionals=Regional::find($id_R);
@@ -103,6 +138,11 @@ class RegionalController extends Controller {
 	{
 		$regionals = Regional::where('name','like','%'.$request->name.'%')->get();
 		return \View::make('listRegional', compact('regionals'));
+=======
+	public function destroy($id)
+	{
+		//
+>>>>>>> 905d2ad6834da555492e0183e25c51bdd72e8244
 	}
 
 }
